@@ -32,6 +32,6 @@
 *.app
 
 # compiled library files
-bin/
-lib/
-*/build/
+bin/*
+lib/*
+*/build/*
