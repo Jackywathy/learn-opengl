@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="S:\Home\Desktop\learn-opengl\lib\glfw-3.2.1\examples\gears.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="S:\Home\Desktop\learn-opengl\lib\glfw-3.2.1\deps\glad.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="S:\Home\Desktop\learn-opengl\lib\glfw-3.2.1\deps\glad\glad.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="S:\Home\Desktop\learn-opengl\lib\glfw-3.2.1\examples\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="S:\Home\Desktop\learn-opengl\lib\glfw-3.2.1\examples\glfw.rc">
+      <Filter>Source Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{CF7A8EFD-51ED-38FC-A394-4C7B02F759AF}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{BDF56170-E8BB-3E08-9260-54AFF5A054FB}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
