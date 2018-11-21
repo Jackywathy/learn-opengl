@@ -5,7 +5,7 @@
 void framebuffer_size_changed(GLFWwindow* window, int width, int height);
 void processInput(GLFWwindow *window);
 
-int main() {
+int main(int argc, char*argv[]) {
 	glfwInit();
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 0);
@@ -105,28 +105,47 @@ FragColor = vec4(1.0f, 0.5f, 0.2f, 1.0f);\
 	float vertices[] = {
 		-0.5f, -0.5f, 0.0f,
 		0.0f, 0.5f, 0.0f,
-		0.5f, -0.5f, 0.0f
+		0.5f, -0.5f, 0.0f,
+		1.0f, 0.5f, 0.0f
 	};
 	GLuint VBO;
 	glGenBuffers(1, &VBO);
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 	
-	// do configuration
+
+	unsigned int indices[] = {
+		0, 1, 2,
+		1,2,3
+	};
+	// bind our ebo
+	GLuint EBO;
+	glGenBuffers(1, &EBO);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
+
+	// do configuration (saved into VAO);
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
 	glEnableVertexAttribArray(0);
 	
 	// set background color
 	glClearColor(0.1f, 0.4f, 0.8f, 1.0f);
-
+	
 	while (!glfwWindowShouldClose(window)) {
 		// input
 		processInput(window);
 
 		// render commands
 		
+
 		glClear(GL_COLOR_BUFFER_BIT);
-		glDrawArrays(GL_TRIANGLES, 0, 3);
+		glUseProgram(program);
+		glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_INT, 0);
+		// glUseProgram(secondProgram);
+		glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_INT, (void*) (3*sizeof(GLuint)));
+
+		
+		
 
 		// draw events, and poll inputs
 		glfwSwapBuffers(window);
@@ -154,3 +173,18 @@ void processInput(GLFWwindow * window) {
 	}
 }
 
+GLuint crateShader(const char* source, GLenum type, int* success, char* msg, unsigned int length) {
+	GLuint shader;
+	shader = glCreateShader(type);
+
+	glShaderSource(shader, 1, &source, NULL);
+	glCompileShader(shader);
+	glGetShaderiv(shader, GL_COMPILE_STATUS, success);
+	if (!*success) {
+		// get reason for error
+		glGetShaderInfoLog(shader, length, NULL, msg);
+		
+	}
+	return shader;
+
+}
