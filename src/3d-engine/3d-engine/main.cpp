@@ -4,6 +4,7 @@
 
 void framebuffer_size_changed(GLFWwindow* window, int width, int height);
 void processInput(GLFWwindow *window);
+unsigned int createShader(const char* source, GLenum type, int* success, char* msg, unsigned int maxLength);
 
 int main(int argc, char*argv[]) {
 	glfwInit();
@@ -37,21 +38,14 @@ int main(int argc, char*argv[]) {
 			gl_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0); \
 		}\
 		";
-	GLuint vertexShader;
-	vertexShader = glCreateShader(GL_VERTEX_SHADER);
-	glShaderSource(vertexShader, 1, &shaderSource, NULL);
-	glCompileShader(vertexShader);
-
 	int success;
-	char infoLog[512];
-	glGetShaderiv(vertexShader, GL_COMPILE_STATUS, &success);
+	char msg[512];
+	auto vertexShader = createShader(shaderSource, GL_VERTEX_SHADER, &success, msg, 512);
 	if (!success) {
-		glGetShaderInfoLog(vertexShader, 512, NULL, infoLog);
-		std::cout << "ERROR::VERTEX::COMPILATION_FAILED\n" << infoLog << std::endl;
-		return -3;
+		std::cout << "ERROR::VERTEX::COMPILATION_FAILED\n" << msg << std::endl;
+		return -2;
 	}
 
-	
 
 	// fragment shader
 	shaderSource = "\
@@ -60,36 +54,57 @@ out vec4 FragColor;\
 void main(){\
 FragColor = vec4(1.0f, 0.5f, 0.2f, 1.0f);\
 }";
-	GLuint fragShader;
-	fragShader = glCreateShader(GL_FRAGMENT_SHADER);
-	glShaderSource(fragShader, 1, &shaderSource, NULL);
-	glCompileShader(fragShader);
-
-	glGetShaderiv(fragShader, GL_COMPILE_STATUS, &success);
+	auto greenShader = createShader(shaderSource, GL_FRAGMENT_SHADER, &success, msg, 512);
 	if (!success) {
-		glGetShaderInfoLog(vertexShader, 512, NULL, infoLog);
-		std::cout << "ERROR::FRAGMENT::COMPILATION_FAILED\n" << infoLog << std::endl;
-		return -4;
+		std::cout << "ERROR::FRAGMENT::COMPILATION_FAILED\n" << msg << std::endl;
+		return -2;
 	}
 
-	// linking program
-	GLuint program;
-	program = glCreateProgram();
-	glAttachShader(program, vertexShader);
-	glAttachShader(program, fragShader);
-	glLinkProgram(program);
-	
-		// check for errors
-	glGetProgramiv(program, GL_LINK_STATUS, &success);
+	shaderSource = "\
+#version 400 core \n\
+out vec4 FragColor;\
+void main(){\
+FragColor = vec4(0.5f, 1.0f, 0.2f, 0.1f);\
+}";
+	auto orangeShader = createShader(shaderSource, GL_FRAGMENT_SHADER, &success, msg, 512);
 	if (!success) {
-		glGetShaderInfoLog(vertexShader, 512, NULL, infoLog);
-		std::cout << "ERROR::LINK::LINK_FAILED\n" << infoLog << std::endl;
+		std::cout << "ERROR::FRAGMENT::COMPILATION_FAILED\n" << msg << std::endl;
+		return -2;
+	}
+
+
+	// linking program
+	GLuint greenProgram;
+	greenProgram = glCreateProgram();
+	glAttachShader(greenProgram, vertexShader);
+	glAttachShader(greenProgram, greenShader);
+	glLinkProgram(greenProgram);
+
+	glGetProgramiv(greenProgram, GL_LINK_STATUS, &success);
+	if (!success) {
+		glGetProgramInfoLog(greenProgram, 512, NULL, msg);
+		std::cout << "ERROR::LINK::LINK_FAILED\n" << msg << std::endl;
 		return -5;
 	}
 
-	glUseProgram(program);
+	GLuint orangeProgram;
+	orangeProgram = glCreateProgram();
+	glAttachShader(orangeProgram, vertexShader);
+	glAttachShader(orangeProgram, orangeShader);
+	glLinkProgram(orangeProgram);
+	
+		// check for errors
+	glGetProgramiv(orangeProgram, GL_LINK_STATUS, &success);
+	if (!success) {
+		glGetProgramInfoLog(orangeProgram, 512, NULL, msg);
+		std::cout << "ERROR::LINK::LINK_FAILED\n" << msg << std::endl;
+		return -5;
+	}
+
+	glUseProgram(greenProgram);
 	glDeleteShader(vertexShader);
-	glDeleteShader(fragShader);
+	glDeleteShader(orangeProgram);
+	glDeleteShader(greenShader);
 
 	
 
@@ -139,9 +154,9 @@ FragColor = vec4(1.0f, 0.5f, 0.2f, 1.0f);\
 		
 
 		glClear(GL_COLOR_BUFFER_BIT);
-		glUseProgram(program);
+		glUseProgram(greenProgram);
 		glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_INT, 0);
-		// glUseProgram(secondProgram);
+		glUseProgram(orangeProgram);
 		glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_INT, (void*) (3*sizeof(GLuint)));
 
 		
@@ -173,7 +188,7 @@ void processInput(GLFWwindow * window) {
 	}
 }
 
-GLuint crateShader(const char* source, GLenum type, int* success, char* msg, unsigned int length) {
+unsigned int createShader(const char* source, GLenum type, int* success, char* msg, unsigned int maxLength) {
 	GLuint shader;
 	shader = glCreateShader(type);
 
@@ -182,7 +197,7 @@ GLuint crateShader(const char* source, GLenum type, int* success, char* msg, uns
 	glGetShaderiv(shader, GL_COMPILE_STATUS, success);
 	if (!*success) {
 		// get reason for error
-		glGetShaderInfoLog(shader, length, NULL, msg);
+		glGetShaderInfoLog(shader, maxLength, NULL, msg);
 		
 	}
 	return shader;

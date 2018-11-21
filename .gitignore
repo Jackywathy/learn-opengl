@@ -32,6 +32,12 @@
 *.app
 
 # compiled library files
-bin/*
-lib/*
-*/build/*
+bin/
+lib/
+build/
+Debug/
+Release/
+*.VC.db
+*.VC.VC.opendb
+*.suo
+*.vcxproj.filters
