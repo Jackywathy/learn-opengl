@@ -1,7 +1,7 @@
 #include <iostream>
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
-
+#define LOAD_RESOURCE(x) 
 void framebuffer_size_changed(GLFWwindow* window, int width, int height);
 void processInput(GLFWwindow *window);
 unsigned int createShader(const char* source, GLenum type, int* success, char* msg, unsigned int maxLength);
@@ -24,6 +24,9 @@ int main(int argc, char*argv[]) {
 		return -2;
 
 	}
+	int nrAttributes;
+	glGetIntegerv(GL_MAX_VERTEX_ATTRIBS, &nrAttributes);
+	std::cout << "MAximum number of attributes" << nrAttributes << std::endl;
 
 	
 	glViewport(0, 0, 600, 600);
@@ -38,11 +41,14 @@ int main(int argc, char*argv[]) {
 			gl_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0); \
 		}\
 		";
+	std::cout << "HEWWO";
+	
 	int success;
 	char msg[512];
 	auto vertexShader = createShader(shaderSource, GL_VERTEX_SHADER, &success, msg, 512);
 	if (!success) {
-		std::cout << "ERROR::VERTEX::COMPILATION_FAILED\n" << msg << std::endl;
+		std::cout << "ERROR::VERTEX::COMPILATION_FAILED::" << __LINE__ << "\n" << msg << std::endl;
+		system("pause");
 		return -2;
 	}
 
@@ -51,24 +57,29 @@ int main(int argc, char*argv[]) {
 	shaderSource = "\
 #version 400 core \n\
 out vec4 FragColor;\
+uniform vec4 leftColor;\
 void main(){\
-FragColor = vec4(1.0f, 0.5f, 0.2f, 1.0f);\
+FragColor = leftColor;\
 }";
 	auto greenShader = createShader(shaderSource, GL_FRAGMENT_SHADER, &success, msg, 512);
 	if (!success) {
-		std::cout << "ERROR::FRAGMENT::COMPILATION_FAILED\n" << msg << std::endl;
+		std::cout << "ERROR::FRAGMENT::COMPILATION_FAILED::" << __LINE__ << "\n" << msg << std::endl;
+		system("pause");
 		return -2;
 	}
+
 
 	shaderSource = "\
 #version 400 core \n\
 out vec4 FragColor;\
-void main(){\
-FragColor = vec4(0.5f, 1.0f, 0.2f, 0.1f);\
+uniform vec4 rightColor;\
+void main(){      \
+FragColor = rightColor;\
 }";
 	auto orangeShader = createShader(shaderSource, GL_FRAGMENT_SHADER, &success, msg, 512);
 	if (!success) {
-		std::cout << "ERROR::FRAGMENT::COMPILATION_FAILED\n" << msg << std::endl;
+		std::cout << "ERROR::FRAGMENT::COMPILATION_FAILED::" << __LINE__ << "\n" << msg << std::endl;
+		system("pause");
 		return -2;
 	}
 
@@ -131,7 +142,7 @@ FragColor = vec4(0.5f, 1.0f, 0.2f, 0.1f);\
 
 	unsigned int indices[] = {
 		0, 1, 2,
-		1,2,3
+		1, 2, 3
 	};
 	// bind our ebo
 	GLuint EBO;
@@ -146,17 +157,30 @@ FragColor = vec4(0.5f, 1.0f, 0.2f, 0.1f);\
 	// set background color
 	glClearColor(0.1f, 0.4f, 0.8f, 1.0f);
 	
+	auto leftColor = glGetUniformLocation(greenProgram, "leftColor");
+	auto rightColor = glGetUniformLocation(orangeProgram, "rightColor");
+
 	while (!glfwWindowShouldClose(window)) {
 		// input
 		processInput(window);
 
+		// create colors
+		float timeValue = glfwGetTime();
+		auto sinVal = abs(sin(timeValue));
+		auto cosVal = abs(cos(timeValue));
+		
+		
 		// render commands
 		
 
 		glClear(GL_COLOR_BUFFER_BIT);
+
 		glUseProgram(greenProgram);
+		glUniform4f(leftColor, cosVal, cosVal, 0.0f, 1.0f);
 		glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_INT, 0);
+
 		glUseProgram(orangeProgram);
+		glUniform4f(rightColor, sinVal, 0.0f, sinVal, 1.0f);
 		glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_INT, (void*) (3*sizeof(GLuint)));
 
 		
