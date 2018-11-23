@@ -37,11 +37,13 @@ int main(int argc, char*argv[]) {
 	auto shaderSource = "                  \
 		#version 400 core				   \n\
 		layout(location = 0) in vec3 aPos; \
+		layout (location =1) in vec3 color; \
+		out vec4 ourColor; \
 		void main(){					   \
 			gl_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0); \
+			ourColor = vec4(color.xyz, 1.0f);\
 		}\
 		";
-	std::cout << "HEWWO";
 	
 	int success;
 	char msg[512];
@@ -56,10 +58,11 @@ int main(int argc, char*argv[]) {
 	// fragment shader
 	shaderSource = "\
 #version 400 core \n\
+in vec4 ourColor; \
 out vec4 FragColor;\
 uniform vec4 leftColor;\
 void main(){\
-FragColor = leftColor;\
+FragColor = ourColor;\
 }";
 	auto greenShader = createShader(shaderSource, GL_FRAGMENT_SHADER, &success, msg, 512);
 	if (!success) {
@@ -71,10 +74,11 @@ FragColor = leftColor;\
 
 	shaderSource = "\
 #version 400 core \n\
+in vec4 ourColor; \
 out vec4 FragColor;\
 uniform vec4 rightColor;\
 void main(){      \
-FragColor = rightColor;\
+FragColor = ourColor;\
 }";
 	auto orangeShader = createShader(shaderSource, GL_FRAGMENT_SHADER, &success, msg, 512);
 	if (!success) {
@@ -129,10 +133,10 @@ FragColor = rightColor;\
 	
 	// bind data to vbo
 	float vertices[] = {
-		-0.5f, -0.5f, 0.0f,
-		0.0f, 0.5f, 0.0f,
-		0.5f, -0.5f, 0.0f,
-		1.0f, 0.5f, 0.0f
+		-0.5f, -0.5f, 0.0f, 1.0f, 0.0f, 0.0f,
+		0.0f, 0.5f, 0.0f, 0.0f, 1.0f, 0.0f,
+		0.5f, -0.5f, 0.0f, 0.0f, 0.0f, 1.0f,
+		1.0f, 0.5f, 0.0f, 1.0f, 0.0f, 0.0f,
 	};
 	GLuint VBO;
 	glGenBuffers(1, &VBO);
@@ -151,9 +155,12 @@ FragColor = rightColor;\
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 
 	// do configuration (saved into VAO);
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
 	glEnableVertexAttribArray(0);
-	
+	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3 * sizeof(float)));
+	glEnableVertexAttribArray(1);
+
+
 	// set background color
 	glClearColor(0.1f, 0.4f, 0.8f, 1.0f);
 	
