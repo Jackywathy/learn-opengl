@@ -1,0 +1,283 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "src/engine/engine.cpp",
+			"settings":
+			{
+				"buffer_size": 6593,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/home/jackjiang/Desktop/projects/opengl-cpp-project",
+		"/home/jackjiang/Desktop/projects/opengl-cpp-project/src",
+		"/home/jackjiang/Desktop/projects/opengl-cpp-project/src/engine",
+		"/home/jackjiang/Desktop/projects/opengl-cpp-project/src/engine/shaders"
+	],
+	"file_history":
+	[
+		"/home/jackjiang/Desktop/projects/opengl-cpp-project/.gitignore",
+		"/home/jackjiang/Desktop/projects/nodeapp/.gitignore",
+		"/home/jackjiang/Desktop/projects/opengl-cpp-project/src/glad/glad.c",
+		"/home/jackjiang/Desktop/projects/opengl-cpp-project/src/glad/CMakeLists.txt",
+		"/home/jackjiang/Desktop/projects/opengl-cpp-project/src/glfw-3.2.1/src/CMakeLists.txt",
+		"/home/jackjiang/Desktop/projects/opengl-cpp-project/src/glfw-3.2.1/CMakeLists.txt",
+		"/home/jackjiang/Desktop/projects/opengl-cpp-project/CMakeLists.txt",
+		"/home/jackjiang/Desktop/projects/cmake/CMakeLists.txt",
+		"/home/jackjiang/Desktop/projects/cmake/YeetFunctions/Makefile",
+		"/home/jackjiang/Desktop/projects/opengl-cpp-project/src/engine/engine.cpp",
+		"/home/jackjiang/Desktop/projects/cmake/YeetFunctions/CMakeLists.txt",
+		"/home/jackjiang/Desktop/projects/opengl-cpp-project/src/glad/CMakeList.txt",
+		"/home/jackjiang/Desktop/projects/opengl-cpp-project/src/glad/glad.o",
+		"/home/jackjiang/Desktop/projects/open-build/src/glfw-3.2.1/src/libglfw3.a",
+		"/home/jackjiang/Desktop/projects/open-build/Makefile",
+		"/home/jackjiang/Desktop/projects/open-build/src/glad/Makefile",
+		"/home/jackjiang/Desktop/projects/opengl-cpp-project/src/engine/CMakeLists.txt",
+		"/home/jackjiang/Desktop/projects/open-build/CMakeFiles/triangles.dir/build.make",
+		"/home/jackjiang/Desktop/projects/opengl-cpp-project/src/3d-engine/CMakeLists.txt",
+		"/home/jackjiang/Desktop/projects/opengl-cpp-project/src/triangles/CMakeLists.txt",
+		"/home/jackjiang/Desktop/projects/open-build/CMakeFiles/triangles.dir/depend.make",
+		"/home/jackjiang/Desktop/projects/opengl-cpp-project/Makefile",
+		"/home/jackjiang/Desktop/projects/opengl-cpp-project/src/triangles-src/main.cpp",
+		"/home/jackjiang/Desktop/projects/opengl-cpp-project/src/3d-engine/engine.cpp",
+		"/home/jackjiang/Desktop/projects/opengl-cpp-project/src/triangles/main.cpp",
+		"/home/jackjiang/Desktop/projects/opengl-cpp-project/src/3d-engine/3d-engine/main.cpp",
+		"/home/jackjiang/Desktop/projects/open-build/src/glfw-3.2.1/src/wayland-pointer-constraints-unstable-v1-client-protocol.h",
+		"/home/jackjiang/Desktop/projects/opengl-cpp-project/src/3d-engine/3d-engine/glad.c",
+		"/home/jackjiang/Desktop/projects/opengl-cpp-project/src/3d-engine/3d-engine/engine.cpp",
+		"/home/jackjiang/Desktop/projects/opengl-cpp-project/include/KHR/khrplatform.h",
+		"/home/jackjiang/Desktop/projects/cmake/HewwoConfig.h.in",
+		"/home/jackjiang/Desktop/projects/cmake-build/HewwoConfig.h",
+		"/home/jackjiang/Desktop/projects/cmake/hi.cpp",
+		"/home/jackjiang/Desktop/projects/cmake/YeetFunctions/myyeet.cpp",
+		"/home/jackjiang/Desktop/projects/cmake/YeetFunctions/myyeet.h",
+		"/home/jackjiang/Desktop/projects/cmake/HewwoConfig.h",
+		"/home/jackjiang/Desktop/projects/nodeapp/tests/SLOTest.js",
+		"/home/jackjiang/Desktop/projects/nodeapp/Database.js",
+		"/home/jackjiang/Desktop/projects/nodeapp/DataObjects.js",
+		"/home/jackjiang/Desktop/projects/nodeapp/main.js",
+		"/home/jackjiang/Desktop/projects/cmake/YeetFunctions/CMakeList.xt",
+		"/home/jackjiang/Desktop/projects/cmake/CMakeCache.txt",
+		"/home/jackjiang/Desktop/projects/nodeapp/constants.js",
+		"/home/jackjiang/Desktop/projects/node-tutorial/www.tutorialspoint.com/nodejs/nodejs_discussion.htm",
+		"/home/jackjiang/Desktop/projects/nodeapp/data-processing/report.csv",
+		"/home/jackjiang/Desktop/nodeapp/data-processing/parse-csv-file.js",
+		"/home/jackjiang/Desktop/nodeapp/data-processing/read-report.js",
+		"/home/jackjiang/Desktop/nodeapp/helper.js",
+		"/home/jackjiang/Desktop/nodeapp/DataObjects.js",
+		"/home/jackjiang/Desktop/nodeapp/.gitignore",
+		"/home/jackjiang/Desktop/nodeapp/package.json",
+		"/home/jackjiang/Desktop/nodeapp/README.md",
+		"/home/jackjiang/Desktop/nodeapp/views/pages/template.ejs",
+		"/home/jackjiang/Desktop/nodeapp/views/partials/footer.ejs",
+		"/home/jackjiang/Desktop/nodeapp/index.html",
+		"/home/jackjiang/Desktop/nodeapp/main.js",
+		"/home/jackjiang/Desktop/nodeapp/static/css/head.css",
+		"/home/jackjiang/Desktop/nodeapp/views/partials/head.ejs"
+	],
+	"find":
+	{
+		"height": 27.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"install",
+			"lib",
+			"ld",
+			"3d-engine",
+			"3d_engine",
+			"linking cxx",
+			"/usr/bin/ld",
+			"ld",
+			"glfw",
+			"add_library",
+			"glfw_SOURCES",
+			"add_library",
+			"DOXYGEN_FOUND",
+			"build",
+			"parseCSVLine"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "src/engine/engine.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6593,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1000,
+								1000
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 216.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 27.0
+	},
+	"input":
+	{
+		"height": 38.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "openglsublime-project",
+	"replace":
+	{
+		"height": 50.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 267.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

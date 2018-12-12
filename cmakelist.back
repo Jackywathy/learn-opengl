@@ -1,0 +1,13 @@
+
+
+
+
+
+# add main executable
+
+add_executable(triangles main.cpp)
+
+# add require libraries
+target_link_libraries (triangles glfw)
+target_link_libraries (triangles glad)
+target_link_libraries (triangles engine)

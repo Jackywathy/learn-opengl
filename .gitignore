@@ -31,13 +31,4 @@
 *.out
 *.app
 
-# compiled library files
-bin/
-lib/
-build/
-Debug/
-Release/
-*.VC.db
-*.VC.VC.opendb
-*.suo
-*.vcxproj.filters
+# 
