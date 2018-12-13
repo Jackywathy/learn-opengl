@@ -30,7 +30,6 @@ Engine::Engine (int width, int height, char const* windowName) {
 	
 	if (!window) {
 		glfwTerminate();
-
 		throw "could not create window";
 	}
 	

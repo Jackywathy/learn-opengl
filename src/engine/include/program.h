@@ -15,7 +15,7 @@ public:
 
 	void useProgram();
 
-
+	unsigned int GetUniformLocation(char[] name);
 };
 
 #endif

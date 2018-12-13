@@ -5,6 +5,7 @@
 #include "engine.h"
 #include "shader.h"
 #include "program.h"
+#include "vertexBuffer.h"
 
 typedef Shader* ShaderP;
 

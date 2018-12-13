@@ -32,8 +32,12 @@ void Program::useProgram() {
 	glUseProgram(this->programId);
 }
 
+unsigned int Program::GetUniformLocation(char[] name) {
+	return glGetUniformLocation(this->programId, name);
+}
 
 
 Program::~Program() {
 	glDeleteProgram(this->programId);
 }
+
